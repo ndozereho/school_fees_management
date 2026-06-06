@@ -10,9 +10,13 @@ import 'class_selection.dart';
 import 'report_screen.dart';
 import '../utils/constants.dart';
 
-// Helper function to create semi-transparent PDF colors
 PdfColor _pdfColorWithOpacity(PdfColor color, double opacity) {
-  return color.mix(PdfColors.white, 1 - opacity);
+  // Blend the color with white to create a semi-transparent effect
+  final r = (color.red * opacity + 1.0 * (1 - opacity)).clamp(0.0, 1.0);
+  final g = (color.green * opacity + 1.0 * (1 - opacity)).clamp(0.0, 1.0);
+  final b = (color.blue * opacity + 1.0 * (1 - opacity)).clamp(0.0, 1.0);
+  
+  return PdfColor(r, g, b, color.alpha);
 }
 
 class DashboardScreen extends StatefulWidget {
