@@ -53,9 +53,6 @@ class DatabaseHelper {
     }
   }
 
-  class DatabaseHelper {
-  // ... existing code ...
-
   Future<void> _createTables(Database db, int version) async {
     // Create classes table
     await db.execute('''
