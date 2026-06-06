@@ -29,23 +29,23 @@ class SchoolFeesApp extends StatelessWidget {
       title: 'School Fees Management System',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-        ),
-        useMaterial3: true,
-        fontFamily: 'Roboto',
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.indigo,
-          foregroundColor: Colors.white,
-          elevation: 2,
-        ),
-        cardTheme: const CardThemeData(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-          ),
-        ),
-      ),
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: Colors.indigo,
+  ),
+  useMaterial3: true,
+  fontFamily: 'Roboto',
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.indigo,
+    foregroundColor: Colors.white,
+    elevation: 2,
+  ),
+  cardTheme: const CardTheme(  // Changed from CardThemeData
+    elevation: 4,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+    ),
+  ),
+),
       home: const LoginScreen(),
     );
   }
