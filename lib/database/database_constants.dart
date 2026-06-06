@@ -4,7 +4,7 @@ class DatabaseConstants {
   static const int databaseVersion = 1;
 
   // Students Table
-  static const String tableStudents = 'students';
+  static const String studentsTable = 'students';
   static const String colStudentId = 'id';
   static const String colLedgerNo = 'ledger_no';
   static const String colParentContact = 'parent_contact';
@@ -20,7 +20,7 @@ class DatabaseConstants {
   static const String colUpdatedAt = 'updated_at';
 
   // Payment Records Table
-  static const String tablePaymentRecords = 'payment_records';
+  static const String paymentRecordsTable = 'payment_records';
   static const String colPaymentId = 'id';
   static const String colPaymentStudentId = 'student_id';
   static const String colPaymentDate = 'payment_date';
@@ -31,7 +31,7 @@ class DatabaseConstants {
   static const String colPaymentCreatedAt = 'created_at';
 
   // Class Sections Table
-  static const String tableClassSections = 'class_sections';
+  static const String classesTable = 'classes';
   static const String colClassSectionId = 'id';
   static const String colClassSectionName = 'class_name';
   static const String colClassSectionType = 'section_type';
