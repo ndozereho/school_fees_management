@@ -114,7 +114,7 @@ class _ClassScreenState extends State<ClassScreen> {
                     children: [
                       Expanded(
                         child: DropdownButtonFormField<String>(
-                          value: _term,
+                          initialValue: _term,  // Use initialValue instead,
                           decoration: const InputDecoration(
                             labelText: 'Term',
                             border: OutlineInputBorder(),
@@ -123,7 +123,7 @@ class _ClassScreenState extends State<ClassScreen> {
                           ),
                           items: ['ONE', 'TWO', 'THREE'].map((String value) {
                             return DropdownMenuItem<String>(
-                              value: value,
+                              initialValue: value,
                               child: Text('Term $value'),
                             );
                           }).toList(),
