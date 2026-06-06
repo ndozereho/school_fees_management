@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite_common/sqlite_db.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'providers/school_data_provider.dart';
 import 'screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize SQLite for Windows desktop
+  if (Platform.isWindows) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
   
   // Initialize the database and load data
   final schoolDataProvider = SchoolDataProvider();
@@ -29,23 +37,23 @@ class SchoolFeesApp extends StatelessWidget {
       title: 'School Fees Management System',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-  colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.indigo,
-  ),
-  useMaterial3: true,
-  fontFamily: 'Roboto',
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.indigo,
-    foregroundColor: Colors.white,
-    elevation: 2,
-  ),
-  cardTheme: const CardTheme(  // Changed from CardThemeData
-    elevation: 4,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
-    ),
-  ),
-),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.indigo,
+        ),
+        useMaterial3: true,
+        fontFamily: 'Roboto',
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+          elevation: 2,
+        ),
+        cardTheme: const CardThemeData(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+        ),
+      ),
       home: const LoginScreen(),
     );
   }
