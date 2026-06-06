@@ -3,7 +3,7 @@ name: Build Windows Executable
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   build-windows:
@@ -23,8 +23,11 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
     
-    - name: Create assets directory
-      run: mkdir -p assets\images
+    - name: Create assets directory (if needed)
+      run: |
+        if (!(Test-Path -Path "assets\images")) {
+          New-Item -ItemType Directory -Path "assets\images" -Force
+        }
     
     - name: Build Windows release
       run: flutter build windows --release
