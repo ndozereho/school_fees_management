@@ -123,7 +123,7 @@ class _ClassScreenState extends State<ClassScreen> {
                           ),
                           items: ['ONE', 'TWO', 'THREE'].map((String value) {
                             return DropdownMenuItem<String>(
-                              initialValue: value,
+                              value: value,
                               child: Text('Term $value'),
                             );
                           }).toList(),
