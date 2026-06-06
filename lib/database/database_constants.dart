@@ -1,11 +1,20 @@
+import 'package:flutter/foundation.dart';
+
 class DatabaseConstants {
   static const String databaseName = 'school_fees.db';
   static const int databaseVersion = 1;
   
+<<<<<<< Updated upstream
   // Table names
   static const String tableStudents = 'students';
   static const String tablePaymentRecords = 'payment_records';
   static const String tableClassSections = 'classes';
+=======
+  // Table names - using consistent naming
+  static const String classesTable = 'classes';
+  static const String studentsTable = 'students';
+  static const String paymentRecordsTable = 'payment_records';
+>>>>>>> Stashed changes
   
   // Students table columns
   static const String colStudentId = 'id';
@@ -37,6 +46,7 @@ class DatabaseConstants {
   static const String colClassSectionType = 'section_type';
   static const String colClassTerm = 'term';
   static const String colClassYear = 'year';
+<<<<<<< Updated upstream
   
   // SQL Queries
   static const String createStudentsTable = '''
@@ -81,3 +91,6 @@ class DatabaseConstants {
     )
   ''';
 }
+=======
+}
+>>>>>>> Stashed changes
