@@ -4,17 +4,10 @@ class DatabaseConstants {
   static const String databaseName = 'school_fees.db';
   static const int databaseVersion = 1;
   
-<<<<<<< Updated upstream
   // Table names
-  static const String tableStudents = 'students';
-  static const String tablePaymentRecords = 'payment_records';
-  static const String tableClassSections = 'classes';
-=======
-  // Table names - using consistent naming
-  static const String classesTable = 'classes';
   static const String studentsTable = 'students';
   static const String paymentRecordsTable = 'payment_records';
->>>>>>> Stashed changes
+  static const String classesTable = 'classes';
   
   // Students table columns
   static const String colStudentId = 'id';
@@ -46,51 +39,4 @@ class DatabaseConstants {
   static const String colClassSectionType = 'section_type';
   static const String colClassTerm = 'term';
   static const String colClassYear = 'year';
-<<<<<<< Updated upstream
-  
-  // SQL Queries
-  static const String createStudentsTable = '''
-    CREATE TABLE $tableStudents (
-      $colStudentId INTEGER PRIMARY KEY AUTOINCREMENT,
-      $colStudentLedgerNo TEXT UNIQUE NOT NULL,
-      $colStudentParentContact TEXT,
-      $colStudentFullName TEXT NOT NULL,
-      $colStudentClassName TEXT NOT NULL,
-      $colStudentSectionType TEXT NOT NULL,
-      $colStudentTerm TEXT NOT NULL,
-      $colStudentYear TEXT NOT NULL,
-      $colStudentFeesStructure REAL DEFAULT 0,
-      $colStudentArrears REAL DEFAULT 0,
-      $colStudentFeesPaid REAL DEFAULT 0,
-      $colStudentExpectedFees REAL DEFAULT 0,
-      $colStudentBalance REAL DEFAULT 0
-    )
-  ''';
-  
-  static const String createPaymentRecordsTable = '''
-    CREATE TABLE $tablePaymentRecords (
-      $colPaymentId INTEGER PRIMARY KEY AUTOINCREMENT,
-      $colPaymentStudentId INTEGER NOT NULL,
-      $colPaymentAmount REAL NOT NULL,
-      $colPaymentDate TEXT NOT NULL,
-      $colPaymentMethod TEXT NOT NULL,
-      $colPaymentReceiptNumber TEXT,
-      $colPaymentNotes TEXT,
-      FOREIGN KEY ($colPaymentStudentId) REFERENCES $tableStudents($colStudentId) ON DELETE CASCADE
-    )
-  ''';
-  
-  static const String createClassesTable = '''
-    CREATE TABLE $tableClassSections (
-      $colClassId INTEGER PRIMARY KEY AUTOINCREMENT,
-      $colClassName TEXT NOT NULL,
-      $colClassSectionType TEXT NOT NULL,
-      $colClassTerm TEXT NOT NULL,
-      $colClassYear TEXT NOT NULL,
-      UNIQUE($colClassName, $colClassSectionType)
-    )
-  ''';
 }
-=======
-}
->>>>>>> Stashed changes
