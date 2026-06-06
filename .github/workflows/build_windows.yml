@@ -23,14 +23,14 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
     
-    - name: Create assets directory (if needed)
-      run: |
-        if (!(Test-Path -Path "assets\images")) {
-          New-Item -ItemType Directory -Path "assets\images" -Force
-        }
-    
     - name: Build Windows release
       run: flutter build windows --release
+    
+    - name: Copy VC++ DLLs
+      run: |
+        copy "C:\Windows\System32\msvcp140.dll" "build\windows\x64\runner\Release\"
+        copy "C:\Windows\System32\vcruntime140.dll" "build\windows\x64\runner\Release\"
+        copy "C:\Windows\System32\vcruntime140_1.dll" "build\windows\x64\runner\Release\"
     
     - name: Upload Windows executable
       uses: actions/upload-artifact@v4
