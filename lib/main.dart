@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite_common/sqlite_db.dart';
+import 'dart:io'; // ADD THIS
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'providers/school_data_provider.dart';
 import 'screens/login_screen.dart';
@@ -16,7 +16,7 @@ void main() async {
   
   // Initialize the database and load data
   final schoolDataProvider = SchoolDataProvider();
-  await schoolDataProvider.loadAllData(); // Use loadAllData() method
+  await schoolDataProvider.loadAllData();
   
   runApp(
     MultiProvider(
@@ -47,7 +47,7 @@ class SchoolFeesApp extends StatelessWidget {
           foregroundColor: Colors.white,
           elevation: 2,
         ),
-        cardTheme: const CardThemeData(
+        cardTheme: const CardTheme( // CHANGED FROM CardThemeData
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
