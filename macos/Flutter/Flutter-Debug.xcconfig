@@ -1,0 +1,11 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "ephemeral/Flutter-Generated.xcconfig"
+'EOF'
+// This is a generated file; do not edit or check into version control.
+FLUTTER_ROOT=/Users/ndozerehonicholas/flutter
+FLUTTER_APPLICATION_PATH=/Users/ndozerehonicholas/Downloads/App_Dev't/school_fees_management
+COCOAPODS_PARALLEL_CODE_SIGN=true
+FLUTTER_TARGET=lib/main.dart
+FLUTTER_BUILD_MODE=debug
+EOF
+
