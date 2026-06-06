@@ -113,27 +113,29 @@ class _ClassScreenState extends State<ClassScreen> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: DropdownButtonFormField<String>(
-                          value: _term,  // Use initialValue instead,
-                          decoration: const InputDecoration(
-                            labelText: 'Term',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.calendar_today),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          ),
-                          items: ['ONE', 'TWO', 'THREE'].map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text('Term $value'),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
-                              _updateTerm(newValue);
-                            }
-                          },
-                        ),
-                      ),
+  child: DropdownButtonFormField<String>(
+    // ignore: deprecated_member_use
+    // ignore: deprecated_member_use
+    value: _term,
+    decoration: const InputDecoration(
+      labelText: 'Term',
+      border: OutlineInputBorder(),
+      prefixIcon: Icon(Icons.calendar_today),
+      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    ),
+    items: ['ONE', 'TWO', 'THREE'].map((String value) {
+      return DropdownMenuItem<String>(
+        value: value,
+        child: Text('Term $value'),
+      );
+    }).toList(),
+    onChanged: (String? newValue) {
+      if (newValue != null) {
+        _updateTerm(newValue);
+      }
+    },
+  ),
+),
                       const SizedBox(width: 16),
                       Expanded(
                         child: TextField(
@@ -379,7 +381,7 @@ class _ClassScreenState extends State<ClassScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         decoration: BoxDecoration(
-          color: isSelected ? color.withAlpha(30) : Colors.grey.shade100,
+          color: isSelected ? color.withValues(alpha: 0.12) : Colors.grey.shade100,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected ? color : Colors.grey.shade300,
