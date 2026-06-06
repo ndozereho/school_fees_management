@@ -10,6 +10,11 @@ import 'class_selection.dart';
 import 'report_screen.dart';
 import '../utils/constants.dart';
 
+// Helper function to create semi-transparent PDF colors
+PdfColor _pdfColorWithOpacity(PdfColor color, double opacity) {
+  return color.mix(PdfColors.white, 1 - opacity);
+}
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -299,7 +304,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return pw.Container(
       padding: const pw.EdgeInsets.all(20),
       decoration: pw.BoxDecoration(
-        color: color.withOpacity(0.2),
+        color: _pdfColorWithOpacity(color, 0.2),
         borderRadius: pw.BorderRadius.circular(10),
         border: pw.Border.all(color: color, width: 2),
       ),
@@ -319,8 +324,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return pw.Container(
       padding: const pw.EdgeInsets.all(15),
       decoration: pw.BoxDecoration(
-        color: color: color.withOpacity(0.1),
-        borderRadius: pw.BorderRadius.circular(10),
+  color: _pdfColorWithOpacity(color, 0.1),
+  borderRadius: pw.BorderRadius.circular(10),
       ),
       child: pw.Column(
         children: [
@@ -438,7 +443,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               // Primary Section with light blue background
               pw.Container(
                 decoration: pw.BoxDecoration(
-                  color: PdfColors.blue.withOpacity(0.1),
+                  color: _pdfColorWithOpacity(PdfColors.blue, 0.1),
                   borderRadius: pw.BorderRadius.circular(10),
                 ),
                 child: _buildComparisonCard('Primary Section', 
@@ -452,7 +457,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               // Kindergarten Section with light orange background
               pw.Container(
                 decoration: pw.BoxDecoration(
-                  color: PdfColors.orange.withOpacity(0.1),
+                  color: _pdfColorWithOpacity(PdfColors.orange, 0.1),
                   borderRadius: pw.BorderRadius.circular(10),
                 ),
                 child: _buildComparisonCard('Kindergarten Section',
@@ -469,7 +474,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               // Grand Total with light green background
               pw.Container(
                 decoration: pw.BoxDecoration(
-                  color: PdfColors.green.withOpacity(0.15),
+                  color: _pdfColorWithOpacity(PdfColors.green, 0.15),
                   borderRadius: pw.BorderRadius.circular(10),
                   border: pw.Border.all(color: PdfColors.green, width: 1),
                 ),
@@ -637,7 +642,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           height: 100,
           decoration: pw.BoxDecoration(
             shape: pw.BoxShape.circle,
-            color: color.withOpacity(0.2),
+            color: _pdfColorWithOpacity(color, 0.2),
             border: pw.Border.all(color: color, width: 3),
           ),
           child: pw.Center(
