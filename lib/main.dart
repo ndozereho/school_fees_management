@@ -39,13 +39,12 @@ class SchoolFeesApp extends StatelessWidget {
           foregroundColor: Colors.white,
           elevation: 2,
         ),
-        cardTheme: CardThemeData(  // Removed 'const' keyword
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      ),
+cardTheme: CardTheme(  // Change from CardThemeData to CardTheme
+  elevation: 4,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12),
+  ),
+),
       home: const LoginScreen(),
     );
   }
