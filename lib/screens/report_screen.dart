@@ -502,20 +502,20 @@ class _ReportScreenState extends State<ReportScreen> {
           Padding(
             padding: const EdgeInsets.all(16), 
             child: DropdownButtonFormField<String>(
-              initialValue: selectedClass,
-              decoration: const InputDecoration(
-                labelText: 'Select Class', 
-                border: OutlineInputBorder(), 
-                prefixIcon: Icon(Icons.class_)
-              ), 
-              items: allClasses.map((c) => DropdownMenuItem<String>(value: c, child: Text(c))).toList(), 
-              onChanged: (v) async { 
-                if (v != null) { 
-                  setState(() => selectedClass = v); 
-                  await loadClassData(); 
-                } 
-              }
-            ),
+  value: selectedClass,  // Already correct in your code
+  decoration: const InputDecoration(
+    labelText: 'Select Class', 
+    border: OutlineInputBorder(), 
+    prefixIcon: Icon(Icons.class_)
+  ), 
+  items: allClasses.map((c) => DropdownMenuItem<String>(value: c, child: Text(c))).toList(), 
+  onChanged: (v) async { 
+    if (v != null) { 
+      setState(() => selectedClass = v); 
+      await loadClassData(); 
+    } 
+  }
+),
           ),
           Expanded(
             child: isLoading 
