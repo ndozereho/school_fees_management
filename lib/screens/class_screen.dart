@@ -114,7 +114,7 @@ class _ClassScreenState extends State<ClassScreen> {
                     children: [
                       Expanded(
                         child: DropdownButtonFormField<String>(
-                          initialValue: _term,  // Use initialValue instead,
+                          value: _term,  // Use initialValue instead,
                           decoration: const InputDecoration(
                             labelText: 'Term',
                             border: OutlineInputBorder(),
