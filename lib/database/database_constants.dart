@@ -1,6 +1,6 @@
 class DatabaseConstants {
   // Database Information
-  static const String databaseName = 'school_fees.db';
+  static const String databaseName = 'school_fees_management.db';
   static const int databaseVersion = 1;
 
   // Students Table
