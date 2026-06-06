@@ -5,15 +5,12 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'providers/school_data_provider.dart';
 import 'screens/login_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize SQLite for Windows desktop
-  if (Platform.isWindows) {
-    sqfliteFfiInit();
-    databaseFactory = databaseFactoryFfi;
-  }
-  
+
+void main() {
+  // Initialize SQLite for Windows/Desktop
+  databaseFactoryFfi.setInMemoryDatabasesSupported(true);
+  databaseFactory = databaseFactoryFfi;
+
   // Initialize the database and load data
   final schoolDataProvider = SchoolDataProvider();
   await schoolDataProvider.loadAllData();
