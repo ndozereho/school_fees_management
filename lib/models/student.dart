@@ -145,39 +145,36 @@ class Student {
     );
   }
 
-  // Convert to map for database
-  Map<String, dynamic> toMap() {
-    return {
-      'studentId': studentId,
-      'ledgerNo': ledgerNo,
-      'parentContact': parentContact,
-      'reamPaid': reamPaid ? 1 : 0,
-      'fullName': fullName,
-      'feesStructure': feesStructure,
-      'arrears': arrears,
-      'className': className,
-      'sectionType': sectionType,
-      'term': term,
-      'year': year,
-    };
-  }
+Map<String, dynamic> toMap() {
+  return {
+    DatabaseConstants.colStudentLedgerNo: ledgerNo,
+    DatabaseConstants.colStudentParentContact: parentContact,
+    DatabaseConstants.colStudentFullName: fullName,
+    DatabaseConstants.colStudentFeesStructure: feesStructure,
+    DatabaseConstants.colStudentArrears: arrears,
+    DatabaseConstants.colStudentFeesPaid: feesPaid,
+    DatabaseConstants.colStudentExpectedFees: expectedFees,
+    DatabaseConstants.colStudentBalance: balance,
+  };
+}
 
-  // Create from map
-  factory Student.fromMap(Map<String, dynamic> map) {
-    return Student(
-      studentId: map['studentId'],
-      ledgerNo: map['ledgerNo'] ?? '',
-      parentContact: map['parentContact'] ?? '',
-      reamPaid: (map['reamPaid'] ?? 0) == 1,
-      fullName: map['fullName'] ?? '',
-      feesStructure: (map['feesStructure'] ?? 0).toDouble(),
-      arrears: (map['arrears'] ?? 0).toDouble(),
-      className: map['className'] ?? '',
-      sectionType: map['sectionType'] ?? '',
-      term: map['term'] ?? 'ONE',
-      year: map['year'] ?? '2026',
-    );
-  }
+factory Student.fromMap(Map<String, dynamic> map) {
+  return Student(
+    id: map[DatabaseConstants.colStudentId],
+    ledgerNo: map[DatabaseConstants.colStudentLedgerNo],
+    parentContact: map[DatabaseConstants.colStudentParentContact],
+    fullName: map[DatabaseConstants.colStudentFullName],
+    className: map[DatabaseConstants.colStudentClassName],
+    sectionType: map[DatabaseConstants.colStudentSectionType],
+    term: map[DatabaseConstants.colStudentTerm],
+    year: map[DatabaseConstants.colStudentYear],
+    feesStructure: map[DatabaseConstants.colStudentFeesStructure],
+    arrears: map[DatabaseConstants.colStudentArrears],
+    feesPaid: map[DatabaseConstants.colStudentFeesPaid],
+    expectedFees: map[DatabaseConstants.colStudentExpectedFees],
+    balance: map[DatabaseConstants.colStudentBalance],
+  );
+}
 
   // Convert to CSV row
   String toCSVRow() {
