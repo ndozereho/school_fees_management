@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart:io'; // ADD THIS
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'providers/school_data_provider.dart';
 import 'screens/login_screen.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'dart:io';
 
-
-void main() {
-  // Initialize SQLite for Windows/Desktop
-  databaseFactoryFfi.setInMemoryDatabasesSupported(true);
-  databaseFactory = databaseFactoryFfi;
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize sqflite for Windows desktop
+  if (Platform.isWindows) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
+  
   // Initialize the database and load data
   final schoolDataProvider = SchoolDataProvider();
   await schoolDataProvider.loadAllData();
@@ -44,7 +48,7 @@ class SchoolFeesApp extends StatelessWidget {
           foregroundColor: Colors.white,
           elevation: 2,
         ),
-        cardTheme: const CardTheme( // CHANGED FROM CardThemeData
+        cardTheme: const CardThemeData(
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
