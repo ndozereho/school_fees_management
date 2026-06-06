@@ -4,6 +4,8 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'database_constants.dart';
 import 'package:flutter/foundation.dart';
+import '../models/student.dart';  // ADD THIS
+import '../models/payment_record.dart';  // ADD THIS
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
