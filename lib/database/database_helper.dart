@@ -43,10 +43,34 @@ class DatabaseHelper {
       
       debugPrint('Database path: $dbPath');
       
+      // Check if database exists and has the correct schema
+      final dbExists = await databaseExists(dbPath);
+      
+      if (dbExists) {
+        // Open database to check tables
+        final db = await openDatabase(dbPath);
+        
+        // Check if classes table exists
+        final result = await db.rawQuery(
+          "SELECT name FROM sqlite_master WHERE type='table' AND name='${DatabaseConstants.classesTable}'"
+        );
+        
+        if (result.isEmpty) {
+          // Table doesn't exist - recreate database
+          debugPrint('Classes table missing, recreating database...');
+          await db.close();
+          await deleteDatabase(dbPath);
+          debugPrint('Old database deleted');
+        } else {
+          await db.close();
+        }
+      }
+      
       return await openDatabase(
         dbPath,
         version: DatabaseConstants.databaseVersion,
         onCreate: _createTables,
+        onUpgrade: _onUpgrade,
       );
     } catch (e) {
       debugPrint('Error initializing database: $e');
@@ -54,7 +78,25 @@ class DatabaseHelper {
     }
   }
 
+  Future<bool> databaseExists(String path) async {
+    return File(path).exists();
+  }
+
+  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    debugPrint('Upgrading database from version $oldVersion to $newVersion');
+    
+    // Drop existing tables
+    await db.execute('DROP TABLE IF EXISTS ${DatabaseConstants.paymentRecordsTable}');
+    await db.execute('DROP TABLE IF EXISTS ${DatabaseConstants.studentsTable}');
+    await db.execute('DROP TABLE IF EXISTS ${DatabaseConstants.classesTable}');
+    
+    // Recreate tables
+    await _createTables(db, newVersion);
+  }
+
   Future<void> _createTables(Database db, int version) async {
+    debugPrint('Creating database tables...');
+    
     // Create classes table
     await db.execute('''
       CREATE TABLE ${DatabaseConstants.classesTable} (
@@ -97,6 +139,8 @@ class DatabaseHelper {
         FOREIGN KEY (studentId) REFERENCES ${DatabaseConstants.studentsTable}(studentId) ON DELETE CASCADE
       )
     ''');
+    
+    debugPrint('Database tables created successfully');
   }
 
   // Get all students
@@ -301,7 +345,7 @@ class DatabaseHelper {
   // Export to CSV
   Future<String> exportToCSV() async {
     final students = await getAllStudents();
-    return Student.csvHeader + '\n' + students.map((s) => s.toCSVRow()).join('\n');
+    return '${Student.csvHeader}\n${students.map((s) => s.toCSVRow()).join('\n')}';
   }
 
   // Clear all data
