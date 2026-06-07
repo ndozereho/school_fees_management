@@ -381,7 +381,7 @@ class _ClassScreenState extends State<ClassScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         decoration: BoxDecoration(
-          color: isSelected ? color.withValues(alpha: 0.12) : Colors.grey.shade100,
+          color: isSelected ? color.withAlpha(30) : Colors.grey.shade100,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected ? color : Colors.grey.shade300,
