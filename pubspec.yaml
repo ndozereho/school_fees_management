@@ -17,11 +17,7 @@ dependencies:
   path_provider: ^2.1.1
   shared_preferences: ^2.2.2
   sqflite: ^2.3.0
-<<<<<<< Updated upstream
-  sqflite_common_ffi: ^2.3.0  # Add this line
-=======
-  sqflite_common_ffi: ^2.3.0 
->>>>>>> Stashed changes
+  sqflite_common_ffi: ^2.3.0
   path: ^1.8.3
   csv: ^5.1.1
   excel: ^2.1.0
