@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 
 class DatabaseConstants {
   static const String databaseName = 'school_fees.db';

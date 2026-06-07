@@ -502,7 +502,7 @@ class _ReportScreenState extends State<ReportScreen> {
           Padding(
             padding: const EdgeInsets.all(16), 
             child: DropdownButtonFormField<String>(
-  value: selectedClass,  // Already correct in your code
+  initialValue: selectedClass,  // Already correct in your code
   decoration: const InputDecoration(
     labelText: 'Select Class', 
     border: OutlineInputBorder(), 
